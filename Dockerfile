@@ -23,12 +23,13 @@ RUN cd /vboxguest && \
     \
     KERN_DIR=$MODULE_DIR make -C amd64/src/vboxguest-${VBOX_VERSION}
 
-RUN mkdir /dist && \
+RUN mkdir -p /dist/usr/lib/modules/${KERNEL_VERSION}/misc && \
     cp /vboxguest/amd64/src/vboxguest-${VBOX_VERSION}/*.ko /dist && \
     cp /vboxguest/amd64/lib/VBoxGuestAdditions/mount.vboxsf /dist && \
     cp /vboxguest/amd64/sbin/VBoxService /dist && \
     cp /vboxguest/amd64/bin/VBoxClient /dist && \
     cp /vboxguest/amd64/bin/VBoxControl /dist && \
     cd /dist && \
+    cp /dist/*.ko usr/lib/modules/${KERNEL_VERSION}/misc && \
     tar -cvzf vbox-binaries.tar.gz VBox* mount.vboxsf && \
-    tar -cvzf vbox-modules.tar.gz *.ko
+    tar -cvzf vbox-modules.tar.gz usr
