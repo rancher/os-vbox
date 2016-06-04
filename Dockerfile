@@ -1,8 +1,8 @@
 FROM ubuntu:14.04.3
 
-ENV VBOX_VERSION 5.0.16
-ENV KERNEL_VERSION 4.2.8-ckt3-rancher
-ENV KERNEL_DOWNLOAD Ubuntu-4.2.0-30.36-rancher
+ENV VBOX_VERSION 5.0.20
+ENV KERNEL_VERSION 4.2.8-ckt4-rancher
+ENV KERNEL_DOWNLOAD Ubuntu-4.2.0-34.39-rancher
 ENV MODULE_DIR /lib/modules/${KERNEL_VERSION}/build
 
 RUN apt-get update && apt-get install -y wget curl build-essential p7zip-full && \
